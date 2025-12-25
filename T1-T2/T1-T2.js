@@ -109,9 +109,31 @@ const library = [
 
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
 /********************* EX1 */
-
+class magicBook {
+  constructor(title, author, genre, yearPublished, available) {
+    this.title = title;
+    this.author = author;
+    this.genre = genre;
+    this.yearPublished = yearPublished;
+    this.available = available; 
+    this.magicSeal = magicBook.generateMagicSeal(this.title, this.author)
+  }
+  static generateMagicSeal(title, author) {
+    return (title.slice(0, 2) + author.slice(-2) + "MAGIC").toUpperCase();
+  }
+  toggleAvailability() {
+    if (!this.available) {
+      this.available = true
+    } else {
+      this.available = false
+    }
+  }
+}
 /********************* EX2 */
-
+const mysticalBooks = library.map(book => {
+  let dabook = new magicBook(book.title, book.author, book.genre, book.yearPublished, book.available)
+  return dabook.magicSeal
+})
 /********************* EX3 */
 
 /********************* EX4 */
